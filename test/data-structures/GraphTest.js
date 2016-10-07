@@ -47,6 +47,13 @@ describe('Graph Test Suite', ()=> {
     expect(G.has_node(4)).to.be.false
   })
 
+  it('should be able to delete node', () => {
+    G.add_nodes_from([1,2])
+    G.remove_node(2)
+    expect(G.has_node(1)).to.be.true
+    expect(G.has_node(2)).to.be.false
+  })
+
   it('should be able to add edges',() => {
     G.add_edge(1,2)
     G.add_edge(4,5,{'weight' : 3})
@@ -66,5 +73,11 @@ describe('Graph Test Suite', ()=> {
     G.add_weighted_edges_from([[1,2,0.4],[2,3,0.7]])
     expect(G.adj[1][2]).to.be.eql({'weight':0.4})
     expect(G.adj[2][3]).to.be.eql({'weight':0.7})
+  })
+
+  it('should remove added edge',()=> {
+    G.add_edge(1,2)
+    G.remove_edge(1,2)
+    expect(_.has(G.adj,[1,2])).to.be.false
   })
 })

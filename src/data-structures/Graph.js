@@ -27,7 +27,7 @@ export default class Graph {
   }
 
   remove_node(id) {
-    let adj = self.adj
+    let adj = this.adj
     let nbrs = []
     if(this.nodes[id]) {
       nbrs = _.keys(adj[id])
@@ -113,8 +113,15 @@ export default class Graph {
     })
   }
 
-  remove_edge() {
-
+  remove_edge(u,v) {
+    try {
+      delete this.adj[u][v]
+      if(u!=v) {
+        delete this.adj[v][u]
+      }
+    } catch(e) {
+      console.log('no edge is present')
+    }
   }
 
 }
