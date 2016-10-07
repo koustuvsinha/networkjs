@@ -80,4 +80,33 @@ describe('Graph Test Suite', ()=> {
     G.remove_edge(1,2)
     expect(_.has(G.adj,[1,2])).to.be.false
   })
+
+  it('should be able to remove edges from list', ()=> {
+    G.add_edges_from([[1,2],[3,4]])
+    G.remove_edges_from([[1,2]])
+    expect(_.has(G.adj,[1,2])).to.be.false
+  })
+
+  it('should have an edge which is added', ()=> {
+    G.add_edges_from([[1,2],[3,4]])
+    expect(G.has_edge(1,2)).to.be.true
+    expect(G.has_edge(2,3)).to.be.false
+  })
+
+  it('should return iterable array for nodes in graph', ()=> {
+    G.add_edges_from([[1,2],[3,4]])
+    expect(G.nbunch_iter([1,3,5])).to.eql([1,3])
+    expect(G.nbunch_iter([])).to.eql([1,2,3,4])
+  })
+
+  it('should return iterable array for degrees in graph', ()=> {
+    G.add_edges_from([[1,2],[1,3],[1,4],[4,5]])
+    let dg = G.degree_iter([1])
+    expect(dg[0][0]).to.equal(1)
+    expect(dg[0][1]).to.equal(3)
+    G.remove_edges_from([[1,2],[1,3],[1,4],[4,5]])
+    G.add_edges_from([[1,2],[1,3],[1,4],[4,5]],{'weight' : 4})
+    dg = G.degree_iter([1],1)
+    expect(dg[0][1]).to.equal(12)
+  })
 })

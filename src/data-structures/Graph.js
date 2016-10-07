@@ -124,4 +124,84 @@ export default class Graph {
     }
   }
 
+  remove_edges_from(edgeb) {
+    let adj = this.adj
+    edgeb.forEach((e)=> {
+      let u = e[0]
+      let v = e[1]
+      if(_.hasIn(adj,u) && _.hasIn(adj[u],v)) {
+        delete adj[u][v]
+        if(u!=v) {
+          delete adj[v][u]
+        }
+      }
+    })
+  }
+
+  has_edge(u,v) {
+    try {
+        return _.hasIn(this.adj[u],v)
+    } catch(e) {
+      return
+    }
+  }
+
+  neighbors(u) {
+    try {
+        return this.adj[u]
+    } catch(e) {
+      return
+    }
+  }
+
+  degree_iter(nodeb,weight) {
+    let nbrs
+    if(!nodeb) {
+      nbrs = _.toPairs(this.adj)
+    } else {
+      nbrs = this.nbunch_iter(nodeb).map((n)=>{
+        return [n,this.adj[n]]
+      })
+    }
+    let deg
+    if(!weight) {
+      deg = nbrs.map((e)=>{
+        let n = e[0]
+        let nbr = e[1]
+        return [n,_.size(nbr)]
+      })
+    } else {
+      // edge weighted sum
+      deg = nbrs.map((e)=>{
+        let n = e[0]
+        let nbr = e[1]
+        let wsum = 0
+        _.forEach(nbr,(nb)=>{
+          wsum = wsum + nb['weight']
+        })
+        return [n,wsum]
+      })
+    }
+    return deg
+  }
+
+  nbunch_iter(nodeb) {
+    let bunch
+    if(!nodeb || nodeb.length < 1) {
+      bunch = _.keys(this.adj).map((k)=>{return parseInt(k)})
+    } else if(nodeb.length == 1) {
+      if(this.adj[nodeb[0]]) {
+        bunch = nodeb
+      }
+    } else {
+      bunch = []
+      nodeb.forEach((n)=>{
+        if(_.hasIn(this.adj,n)) {
+          bunch.push(n)
+        }
+      })
+    }
+    return bunch
+  }
+
 }
