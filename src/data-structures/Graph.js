@@ -56,6 +56,14 @@ export default class Graph {
     return _.size(this.nodes)
   }
 
+  get_nodes() {
+    return _.keys(this.nodes)
+  }
+
+  is_directed() {
+    return false
+  }
+
   /**
    * Only supports single attribute for now
    */
