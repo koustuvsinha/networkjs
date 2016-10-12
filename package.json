@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive test/",
-    "compile": "babel -d lib/ src/ && babel index.js --out-file lib/index.js && babel cli.js --out-file lib/cli.js",
+    "compile": "babel -d lib/ src/ && babel cli.js --out-file lib/cli.js",
     "prepublish": "npm run compile"
   },
   "author": "Koustuv Sinha",
