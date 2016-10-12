@@ -13,7 +13,7 @@ Implemented modules :
 * [Installation](#installation)
 * [Usage](#usage)
   * [Command Line](#command-line)
-  * Library - _Todo_
+  * [Library](#library-usage)
 * [API Reference](#api-reference)
 * [Run Tests](#run-tests)
 * [Change Log](#change-log)
@@ -42,13 +42,53 @@ Usage: networkjs [options] <file.csv>
 
 ```
 
+or for more details consult the man page : `man networkjs`
+
 ### Library Usage
 
-Import
+Import the required modules either using AMD `require` or ES6 `import` :
+
+```js
+import nj from 'networkjs'
+const Graph = nj.datastructures.Graph
+const {betweenness_centrality,
+  degree_centrality,
+  eigenvector_centrality} = nj.algorithms.centrality
+
+// Add edges
+let G = new Graph()
+G.add_edges_from([[1,2],[2,3]])
+```
 
 ## API Reference
 
-_Todo_
+### datastructures.Graph
+
+* `read_csv`
+* `add_node`
+* `add_nodes_from`
+* `remove_node`
+* `get_node`
+* `order`
+* `has_node`
+* `num_nodes`
+* `get_nodes`
+* `is_directed`
+* `add_edge`
+* `add_edges_from`
+* `add_weighted_edges_from`
+* `remove_edge`
+* `remove_edges_from`
+* `has_edge`
+* `neighbors`
+* `degree_iter`
+* `nbunch_iter`
+
+### algorithms.centrality
+
+* `degree_centrality`
+* `betweenness_centrality`
+* `eigenvector_centrality`
 
 ## Run Tests
 
