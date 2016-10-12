@@ -7,21 +7,33 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --recursive test/"
+    "test": "mocha --compilers js:babel-core/register --recursive test/",
+    "compile": "babel -d lib/ src/ && babel index.js --out-file lib/index.js",
+    "prepublish": "npm run compile"
   },
   "author": "Koustuv Sinha",
   "license": "ISC",
   "dependencies": {
     "babel-polyfill": "^6.16.0",
+    "babel-core": "^6.17.0",
     "big.js": "^3.1.3",
+    "chalk": "^1.1.3",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.9.0",
     "csvtojson": "^1.0.3",
     "heap": "^0.2.6",
-    "lodash": "^4.16.4"
+    "lodash": "^4.16.4",
+    "progress": "^1.1.8"
   },
   "devDependencies": {
-    "babel-core": "^6.17.0",
+    "babel-cli": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "chai": "^3.5.0",
     "mocha": "^3.1.0"
+  },
+  "bin": {
+    "networkjs": "./lib/index.js"
   }
 }

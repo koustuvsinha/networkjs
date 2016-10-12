@@ -219,14 +219,14 @@ export default class Graph {
    */
   read_csv(filename,sourceNode,targetNode,weightNode,cb) {
     const converter = new Converter({})
-    converter.fromFile(filename,(err,result)=>{
-      if(err) cb(err)
+    converter.on('end_parsed',(result)=>{
       result.forEach((row)=>{
         this.add_edge(row[sourceNode],row[targetNode],{'weight':row[weightNode]})
       })
       // execute callback
       cb(null)
     })
+    fs.createReadStream(filename).pipe(converter)
   }
 
 }
