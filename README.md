@@ -54,6 +54,10 @@ npm test
 
 ## Change Log
 
+### 0.0.4
+
+* Experimental Library Support
+
 ### 0.0.3
 
 * Minor fixes
