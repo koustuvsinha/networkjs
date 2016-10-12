@@ -109,4 +109,10 @@ describe('Graph Test Suite', ()=> {
     dg = G.degree_iter([1],1)
     expect(dg[0][1]).to.equal(12)
   })
+
+  it('should load csv', ()=> {
+    G.read_csv('test/test.csv','Source','Target','Weight',(err)=>{
+      expect(G.num_nodes()).to.eql(5)
+    })
+  })
 })

@@ -3,6 +3,8 @@
  * Trying to keep the API as similar as possible with NetworkX
  */
 import _ from 'lodash'
+import {Converter} from 'csvtojson'
+import fs from 'fs'
 
 export default class Graph {
   constructor() {
@@ -210,6 +212,21 @@ export default class Graph {
       })
     }
     return bunch
+  }
+
+  /**
+   * Read CSV files and create a new Graph
+   */
+  read_csv(filename,sourceNode,targetNode,weightNode,cb) {
+    const converter = new Converter({})
+    converter.fromFile(filename,(err,result)=>{
+      if(err) cb(err)
+      result.forEach((row)=>{
+        this.add_edge(row[sourceNode],row[targetNode],{'weight':row[weightNode]})
+      })
+      // execute callback
+      cb(null)
+    })
   }
 
 }
