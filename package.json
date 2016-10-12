@@ -1,6 +1,6 @@
 {
   "name": "networkjs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NetworkX Clone in JavaScript",
   "main": "index.js",
   "directories": {
@@ -33,9 +33,9 @@
     "chai": "^3.5.0",
     "mocha": "^3.1.0"
   },
-  "repository" :{
-    "type" : "git",
-    "url" : "https://github.com/koustuvsinha/networkjs"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koustuvsinha/networkjs"
   },
   "bin": {
     "networkjs": "./lib/index.js"
