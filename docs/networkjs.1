@@ -1,0 +1,91 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "NETWORKJS" "1" "October 2016" "" ""
+.
+.SH "NAME"
+\fBnetworkjs\fR \- NetworkX clone in JavaScript
+.
+.SH "SYNOPSIS"
+\fBnetworkjs\fR [\fIoptions\fR \.\.\.] <file\.csv> \.\.\.
+.
+.br
+\fBnetworkjs\fR \fB\-d\fR|\fB\-\-degree\fR <file\.csv> \.\.\.
+.
+.br
+\fBnetworkjs\fR \fB\-b\fR|\fB\-\-betweenness\fR <file\.csv> \.\.\.
+.
+.br
+\fBnetworkjs\fR \fB\-e\fR|\fB\-\-eigenvector\fR <file\.csv> \.\.\.
+.
+.br
+\fBnetworkjs\fR \fB\-h\fR|\fB\-\-help\fR
+.
+.SH "DESCRIPTION"
+\fBNetworkJS\fR is a JavaScript Network Library, heavily inspired by the popular python equivalent NetworkX\.
+.
+.P
+\fBnetworkjs\fR is a command line tool and it can also be used as a library through npm\. For the moment it supports three centrality measures on Graph networks, while the end goal is to have complete coverage over NetworkX api\'s\. It takes an input <file\.csv> which should be a comma separated csv file, and performs the calculations based on options\.
+.
+.P
+The \fB\-\-degree\fR,\fB\-\-betweenness\fR and \fB\-\-eigenvector\fR options calculates those measures on the provided dataset\. The \fB\-\-help\fR flag displays command line options
+.
+.SH "FILE"
+The \fBnetworkjs\fR command expects one valid csv file, which should be comma separated, for example \fBfile\.csv\fR\. This file should contain the edge list of a graph in the format of Source,Target,Weight,\.\.etc\. The header names can be later provided within the system when prompted\.
+.
+.SH "OPTIONS"
+These options instruct \fBnetworkjs\fR to run the centrality measures on the provided dataset :
+.
+.TP
+\fB\-d\fR,\fB\-\-degree\fR
+Run Degree centrality measure over the given dataset, which is defined as the number of links incident upon a node\. \fIhttps://en\.wikipedia\.org/wiki/Centrality#Degree_centrality\fR
+.
+.TP
+\fB\-b\fR,\fB\-\-betweenness\fR
+Run Betweenness centrality measure over the given dataset, which for a node is defined as the number of times a node acts as a bridge along the shortest path between two other nodes\. \fIhttps://en\.wikipedia\.org/wiki/Centrality#Betweenness_centrality\fR
+.
+.TP
+\fB\-e\fR,\fB\-\-eigenvector\fR
+Run Eigenvector centrality measure over the given dataset, which calculates the influence of a node in the network\. It assigns relative scores to all nodes in the network based on the concept that connections to high\-scoring nodes contribute more to the score of the node in question than equal connections to low\-scoring nodes\. \fIhttps://en\.wikipedia\.org/wiki/Centrality#Eigenvector_centrality\fR
+.
+.TP
+\fB\-h\fR,\fB\-\-help\fR
+Display command line help usage for the methods available
+.
+.SH "PROMPTS"
+While running the command, \fBnetworkjs\fR will prompt for the following inputs:
+.
+.IP "\(bu" 4
+\fBsourceNode\fR : Provide the column name for the node to be the source of an edge
+.
+.IP "\(bu" 4
+\fBtargetNode\fR : Provide the column name for the node to be the target of an edge
+.
+.IP "\(bu" 4
+\fBweightNode\fR : Provide the column name for the weight attribute (Optional, if not provided graph will be treated as unweighted)
+.
+.IP "" 0
+.
+.SH "EXAMPLE"
+Provide the dataset csv and run the analysis on them like this :
+.
+.P
+$ networkjs \-d \-e \-b file\.csv
+.
+.P
+View the command line usage :
+.
+.P
+$ networkjs \-\-help
+.
+.P
+View the man docs of \fBnetworkjs\fR :
+.
+.P
+$ man networkjs
+.
+.SH "BUGS"
+\fBNetworkJS\fR is written in NodeJS and hence requires NodeJS >= 0\.4\.3 to be installed in the system\. For any bugs do file an issue to the public repository \fIhttps://github\.com/koustuvsinha/networkjs/issues\fR
+.
+.SH "COPYRIGHT"
+\fBNetworkJS\fR is MIT licensed \fIhttps://koustuvs\.mit\-license\.org/\fR, (C) 2016 Koustuv Sinha \fIhttp://koustuvsinha\.github\.io\fR

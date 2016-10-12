@@ -42,6 +42,10 @@ Usage: networkjs [options] <file.csv>
 
 ```
 
+### Library Usage
+
+Import
+
 ## API Reference
 
 _Todo_
@@ -53,6 +57,15 @@ npm test
 ```
 
 ## Change Log
+
+### 0.0.7
+
+* Fix babel [module.exports issue](http://stackoverflow.com/questions/33505992/babel-6-changes-how-it-exports-default)
+* Add man pages
+
+### 0.0.6
+
+* Patch fix again broken library import
 
 ### 0.0.5
 

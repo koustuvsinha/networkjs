@@ -1,0 +1,89 @@
+networkjs - NetworkX clone in JavaScript
+==========================================
+
+## SYNOPSIS
+
+`networkjs` [<options> ...] <file.csv> ... <br>
+`networkjs` `-d`|`--degree` <file.csv> ... <br>
+`networkjs` `-b`|`--betweenness` <file.csv> ... <br>
+`networkjs` `-e`|`--eigenvector` <file.csv> ... <br>
+`networkjs` `-h`|`--help`
+
+## DESCRIPTION
+
+**NetworkJS** is a JavaScript Network Library, heavily inspired by the popular
+python equivalent NetworkX.
+
+`networkjs` is a command line tool and it can also be used as a library through
+npm. For the moment it supports three centrality measures on Graph networks, while
+the end goal is to have complete coverage over NetworkX api's. It takes an input
+<file.csv> which should be a comma separated csv file, and performs the calculations
+based on options.
+
+The `--degree`,`--betweenness` and `--eigenvector` options calculates those measures
+on the provided dataset. The `--help` flag displays command line options
+
+## FILE
+
+The `networkjs` command expects one valid csv file, which should be comma separated,
+for example `file.csv`. This file should contain the edge list of a graph in the
+format of Source,Target,Weight,..etc. The header names can be later provided within
+the system when prompted.
+
+## OPTIONS
+
+These options instruct `networkjs` to run the centrality measures on the provided
+dataset :
+
+  * `-d`,`--degree`:
+    Run Degree centrality measure over the given dataset, which is defined as the
+    number of links incident upon a node. <https://en.wikipedia.org/wiki/Centrality#Degree_centrality>
+
+  * `-b`,`--betweenness`:
+    Run Betweenness centrality measure over the given dataset, which for a node is
+    defined as the number of times a node acts as a bridge along the shortest path
+    between two other nodes. <https://en.wikipedia.org/wiki/Centrality#Betweenness_centrality>
+
+  * `-e`,`--eigenvector`:
+    Run Eigenvector centrality measure over the given dataset, which calculates
+    the influence of a node in the network. It assigns relative scores to all
+    nodes in the network based on the concept that connections to high-scoring
+    nodes contribute more to the score of the node in question than equal
+    connections to low-scoring nodes. <https://en.wikipedia.org/wiki/Centrality#Eigenvector_centrality>
+
+  * `-h`,`--help`:
+    Display command line help usage for the methods available
+
+## PROMPTS
+
+While running the command, `networkjs` will prompt for the following inputs:
+
+  * `sourceNode` : Provide the column name for the node to be the source of an edge
+  * `targetNode` : Provide the column name for the node to be the target of an edge
+  * `weightNode` : Provide the column name for the weight attribute (Optional, if
+    not provided graph will be treated as unweighted)
+
+## EXAMPLE
+
+Provide the dataset csv and run the analysis on them like this :
+
+  $ networkjs -d -e -b file.csv
+
+View the command line usage :
+
+  $ networkjs --help
+
+View the man docs of `networkjs` :
+
+  $ man networkjs
+
+## BUGS
+
+**NetworkJS** is written in NodeJS and hence requires NodeJS >= 0.4.3 to be installed
+in the system. For any bugs do file an issue to the public repository
+<https://github.com/koustuvsinha/networkjs/issues>
+
+## COPYRIGHT
+
+**NetworkJS** is MIT licensed <https://koustuvs.mit-license.org/>, (C) 2016 Koustuv Sinha
+<http://koustuvsinha.github.io>
