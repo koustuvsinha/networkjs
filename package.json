@@ -2,7 +2,7 @@
   "name": "networkjs",
   "version": "0.0.4",
   "description": "NetworkX Clone in JavaScript",
-  "main": "index.js",
+  "main": "lib/index.js",
   "directories": {
     "test": "test"
   },

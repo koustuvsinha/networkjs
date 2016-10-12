@@ -1,2 +1,2 @@
-module.exports = require('./algorithms')
-module.exports = require('./data-structures')
+module.exports.algorithms = require('./algorithms')
+module.exports.datastructures = require('./data-structures')

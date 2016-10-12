@@ -54,6 +54,10 @@ npm test
 
 ## Change Log
 
+### 0.0.5
+
+* Patch fix broken library import
+
 ### 0.0.4
 
 * Experimental Library Support
