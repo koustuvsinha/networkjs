@@ -1,7 +1,7 @@
 {
   "name": "networkjs",
   "version": "0.0.2",
-  "description": "",
+  "description": "NetworkX Clone in JavaScript",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -12,7 +12,7 @@
     "prepublish": "npm run compile"
   },
   "author": "Koustuv Sinha",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.16.0",
     "babel-core": "^6.17.0",
@@ -32,6 +32,10 @@
     "babel-preset-stage-0": "^6.16.0",
     "chai": "^3.5.0",
     "mocha": "^3.1.0"
+  },
+  "repository" :{
+    "type" : "git",
+    "url" : "https://github.com/koustuvsinha/networkjs"
   },
   "bin": {
     "networkjs": "./lib/index.js"
