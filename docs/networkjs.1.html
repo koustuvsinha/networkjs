@@ -57,8 +57,8 @@
     <a href="#SYNOPSIS">SYNOPSIS</a>
     <a href="#DESCRIPTION">DESCRIPTION</a>
     <a href="#FILE">FILE</a>
+    <a href="#SOURCE-TARGET-and-WEIGHT">SOURCE,TARGET and WEIGHT</a>
     <a href="#OPTIONS">OPTIONS</a>
-    <a href="#PROMPTS">PROMPTS</a>
     <a href="#EXAMPLE">EXAMPLE</a>
     <a href="#BUGS">BUGS</a>
     <a href="#COPYRIGHT">COPYRIGHT</a>
@@ -77,7 +77,7 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>networkjs</code> [<var>options</var> ...] &lt;file.csv> ... <br />
+<p><code>networkjs</code> [<var>options</var> ...] &lt;file.csv> <var>sourceNode</var> <var>targetNode</var> [weightNode] <br />
 <code>networkjs</code> <code>-d</code>|<code>--degree</code> &lt;file.csv> ... <br />
 <code>networkjs</code> <code>-b</code>|<code>--betweenness</code> &lt;file.csv> ... <br />
 <code>networkjs</code> <code>-e</code>|<code>--eigenvector</code> &lt;file.csv> ... <br />
@@ -101,8 +101,14 @@ on the provided dataset. The <code>--help</code> flag displays command line opti
 
 <p>The <code>networkjs</code> command expects one valid csv file, which should be comma separated,
 for example <code>file.csv</code>. This file should contain the edge list of a graph in the
-format of Source,Target,Weight,..etc. The header names can be later provided within
-the system when prompted.</p>
+format of Source,Target,Weight,..etc. The header names should be specified after file name
+in the order of Source,Target and Weight (optional)</p>
+
+<h2 id="SOURCE-TARGET-and-WEIGHT">SOURCE,TARGET and WEIGHT</h2>
+
+<p><code>networkjs</code> expects the header names of source node, target node and weight node(optional)
+to be specified in order in order to perform calculations. Source and Target are
+required in order to run the program</p>
 
 <h2 id="OPTIONS">OPTIONS</h2>
 
@@ -124,23 +130,11 @@ connections to low-scoring nodes. <a href="https://en.wikipedia.org/wiki/Central
 </dl>
 
 
-<h2 id="PROMPTS">PROMPTS</h2>
-
-<p>While running the command, <code>networkjs</code> will prompt for the following inputs:</p>
-
-<ul>
-<li><code>sourceNode</code> : Provide the column name for the node to be the source of an edge</li>
-<li><code>targetNode</code> : Provide the column name for the node to be the target of an edge</li>
-<li><code>weightNode</code> : Provide the column name for the weight attribute (Optional, if
-not provided graph will be treated as unweighted)</li>
-</ul>
-
-
 <h2 id="EXAMPLE">EXAMPLE</h2>
 
 <p>Provide the dataset csv and run the analysis on them like this :</p>
 
-<p>  $ networkjs -d -e -b file.csv</p>
+<p>  $ networkjs -d -e -b file.csv Source Target Weight</p>
 
 <p>View the command line usage :</p>
 

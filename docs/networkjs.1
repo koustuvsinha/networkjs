@@ -7,7 +7,7 @@
 \fBnetworkjs\fR \- NetworkX clone in JavaScript
 .
 .SH "SYNOPSIS"
-\fBnetworkjs\fR [\fIoptions\fR \.\.\.] <file\.csv> \.\.\.
+\fBnetworkjs\fR [\fIoptions\fR \.\.\.] <file\.csv> \fIsourceNode\fR \fItargetNode\fR [weightNode]
 .
 .br
 \fBnetworkjs\fR \fB\-d\fR|\fB\-\-degree\fR <file\.csv> \.\.\.
@@ -31,7 +31,10 @@
 The \fB\-\-degree\fR,\fB\-\-betweenness\fR and \fB\-\-eigenvector\fR options calculates those measures on the provided dataset\. The \fB\-\-help\fR flag displays command line options
 .
 .SH "FILE"
-The \fBnetworkjs\fR command expects one valid csv file, which should be comma separated, for example \fBfile\.csv\fR\. This file should contain the edge list of a graph in the format of Source,Target,Weight,\.\.etc\. The header names can be later provided within the system when prompted\.
+The \fBnetworkjs\fR command expects one valid csv file, which should be comma separated, for example \fBfile\.csv\fR\. This file should contain the edge list of a graph in the format of Source,Target,Weight,\.\.etc\. The header names should be specified after file name in the order of Source,Target and Weight (optional)
+.
+.SH "SOURCE,TARGET and WEIGHT"
+\fBnetworkjs\fR expects the header names of source node, target node and weight node(optional) to be specified in order in order to perform calculations\. Source and Target are required in order to run the program
 .
 .SH "OPTIONS"
 These options instruct \fBnetworkjs\fR to run the centrality measures on the provided dataset :
@@ -52,25 +55,11 @@ Run Eigenvector centrality measure over the given dataset, which calculates the 
 \fB\-h\fR,\fB\-\-help\fR
 Display command line help usage for the methods available
 .
-.SH "PROMPTS"
-While running the command, \fBnetworkjs\fR will prompt for the following inputs:
-.
-.IP "\(bu" 4
-\fBsourceNode\fR : Provide the column name for the node to be the source of an edge
-.
-.IP "\(bu" 4
-\fBtargetNode\fR : Provide the column name for the node to be the target of an edge
-.
-.IP "\(bu" 4
-\fBweightNode\fR : Provide the column name for the weight attribute (Optional, if not provided graph will be treated as unweighted)
-.
-.IP "" 0
-.
 .SH "EXAMPLE"
 Provide the dataset csv and run the analysis on them like this :
 .
 .P
-$ networkjs \-d \-e \-b file\.csv
+$ networkjs \-d \-e \-b file\.csv Source Target Weight
 .
 .P
 View the command line usage :

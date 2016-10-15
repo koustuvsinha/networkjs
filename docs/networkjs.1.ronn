@@ -3,7 +3,7 @@ networkjs - NetworkX clone in JavaScript
 
 ## SYNOPSIS
 
-`networkjs` [<options> ...] <file.csv> ... <br>
+`networkjs` [<options> ...] <file.csv> <sourceNode> <targetNode> [weightNode] <br>
 `networkjs` `-d`|`--degree` <file.csv> ... <br>
 `networkjs` `-b`|`--betweenness` <file.csv> ... <br>
 `networkjs` `-e`|`--eigenvector` <file.csv> ... <br>
@@ -27,8 +27,14 @@ on the provided dataset. The `--help` flag displays command line options
 
 The `networkjs` command expects one valid csv file, which should be comma separated,
 for example `file.csv`. This file should contain the edge list of a graph in the
-format of Source,Target,Weight,..etc. The header names can be later provided within
-the system when prompted.
+format of Source,Target,Weight,..etc. The header names should be specified after file name
+in the order of Source,Target and Weight (optional)
+
+## SOURCE,TARGET and WEIGHT
+
+`networkjs` expects the header names of source node, target node and weight node(optional)
+to be specified in order in order to perform calculations. Source and Target are
+required in order to run the program
 
 ## OPTIONS
 
@@ -54,20 +60,11 @@ dataset :
   * `-h`,`--help`:
     Display command line help usage for the methods available
 
-## PROMPTS
-
-While running the command, `networkjs` will prompt for the following inputs:
-
-  * `sourceNode` : Provide the column name for the node to be the source of an edge
-  * `targetNode` : Provide the column name for the node to be the target of an edge
-  * `weightNode` : Provide the column name for the weight attribute (Optional, if
-    not provided graph will be treated as unweighted)
-
 ## EXAMPLE
 
 Provide the dataset csv and run the analysis on them like this :
 
-  $ networkjs -d -e -b file.csv
+  $ networkjs -d -e -b file.csv Source Target Weight
 
 View the command line usage :
 

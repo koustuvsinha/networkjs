@@ -31,15 +31,15 @@ Implemented modules :
 See full options available : `networkjs --help`
 
 ```sh
-Usage: networkjs [options] <file.csv>
+Usage: networkjs [options] <file.csv> <sourceNode> <targetNode> [weightNode]
 
- Options:
+  Options:
 
-   -h, --help        output usage information
-   -d,--degree       Calculate the degree centrality
-   -b,--betweenness  Calculate the betweenness centrality
-   -e,--eigenvector  Calculate the Eigenvector centrality
-
+    -h, --help        output usage information
+    -d,--degree       Calculate the degree centrality
+    -b,--betweenness  Calculate the betweenness centrality
+    -e,--eigenvector  Calculate the Eigenvector centrality
+    -j,--json         Return the results in json, else csv
 ```
 
 or for more details consult the man page : `man networkjs`
@@ -102,6 +102,15 @@ npm test
 
 * Fix babel [module.exports issue](http://stackoverflow.com/questions/33505992/babel-6-changes-how-it-exports-default)
 * Add man pages
+
+### 0.1.0
+
+* Updated command line interface, now provide Source, Target and Weight headers directly
+* Command line output in csv by default. To get json output provide flag `--json`
+
+### 0.0.7
+
+* Minor improvements and bug fixes
 
 ### 0.0.6
 
