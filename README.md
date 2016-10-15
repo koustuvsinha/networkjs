@@ -98,11 +98,6 @@ npm test
 
 ## Change Log
 
-### 0.0.7
-
-* Fix babel [module.exports issue](http://stackoverflow.com/questions/33505992/babel-6-changes-how-it-exports-default)
-* Add man pages
-
 ### 0.1.0
 
 * Updated command line interface, now provide Source, Target and Weight headers directly
@@ -110,7 +105,8 @@ npm test
 
 ### 0.0.7
 
-* Minor improvements and bug fixes
+* Fix babel [module.exports issue](http://stackoverflow.com/questions/33505992/babel-6-changes-how-it-exports-default)
+* Add man pages
 
 ### 0.0.6
 
