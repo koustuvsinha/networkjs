@@ -111,9 +111,9 @@ G.add_edges_from([[1,2],[2,3]])
 
 ### algorithms.centrality
 
-* `degree_centrality`
-* `betweenness_centrality`
-* `eigenvector_centrality`
+* [`degree_centrality`](https://networkx.github.io/documentation/development/reference/generated/networkx.algorithms.centrality.degree_centrality.html#networkx.algorithms.centrality.degree_centrality)
+* [`betweenness_centrality`](https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.algorithms.centrality.betweenness_centrality.html)
+* [`eigenvector_centrality`](https://networkx.github.io/documentation/development/reference/generated/networkx.algorithms.centrality.eigenvector_centrality.html)
 
 ## Run Tests
 
