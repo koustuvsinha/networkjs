@@ -7,7 +7,16 @@
 \fBnetworkjs\fR \- NetworkX clone in JavaScript
 .
 .SH "SYNOPSIS"
-\fBnetworkjs\fR [\fIoptions\fR \.\.\.] <file\.csv> \fIsourceNode\fR \fItargetNode\fR [weightNode]
+\fBnetworkjs\fR [\fIoptions\fR \.\.\.] <file\.csv>
+.
+.br
+\fBnetworkjs\fR \fB\-s\fR|\fB\-\-source\fR \fIsourceNode\fR \.\.\.
+.
+.br
+\fBnetworkjs\fR \fB\-t\fR|\fB\-\-target\fR \fItargetNode\fR \.\.\.
+.
+.br
+\fBnetworkjs\fR \fB\-w\fR|\fB\-\-weight\fR \fIweightNode\fR \.\.\.
 .
 .br
 \fBnetworkjs\fR \fB\-d\fR|\fB\-\-degree\fR <file\.csv> \.\.\.
@@ -31,13 +40,22 @@
 The \fB\-\-degree\fR,\fB\-\-betweenness\fR and \fB\-\-eigenvector\fR options calculates those measures on the provided dataset\. The \fB\-\-help\fR flag displays command line options
 .
 .SH "FILE"
-The \fBnetworkjs\fR command expects one valid csv file, which should be comma separated, for example \fBfile\.csv\fR\. This file should contain the edge list of a graph in the format of Source,Target,Weight,\.\.etc\. The header names should be specified after file name in the order of Source,Target and Weight (optional)
-.
-.SH "SOURCE,TARGET and WEIGHT"
-\fBnetworkjs\fR expects the header names of source node, target node and weight node(optional) to be specified in order in order to perform calculations\. Source and Target are required in order to run the program
+The \fBnetworkjs\fR command expects one valid csv file, which should be comma separated, for example \fBfile\.csv\fR\. This file should contain the edge list of a graph in the format of Source,Target,Weight,\.\.etc or can be provided by individual option flags
 .
 .SH "OPTIONS"
 These options instruct \fBnetworkjs\fR to run the centrality measures on the provided dataset :
+.
+.TP
+\fB\-s\fR,\fB\-\-source\fR \fIsourceNode\fR
+Provide the column name for Source Node\. Default value = "Source"
+.
+.TP
+\fB\-t\fR,\fB\-\-target\fR \fItargetNode\fR
+Provide the column name for Target Node\. Default value = "Target"
+.
+.TP
+\fB\-w\fR,\fB\-\-weight\fR \fIweightNode\fR
+Provide the column name for Weight Node\. Default value = "Weight"
 .
 .TP
 \fB\-d\fR,\fB\-\-degree\fR
@@ -52,6 +70,10 @@ Run Betweenness centrality measure over the given dataset, which for a node is d
 Run Eigenvector centrality measure over the given dataset, which calculates the influence of a node in the network\. It assigns relative scores to all nodes in the network based on the concept that connections to high\-scoring nodes contribute more to the score of the node in question than equal connections to low\-scoring nodes\. \fIhttps://en\.wikipedia\.org/wiki/Centrality#Eigenvector_centrality\fR
 .
 .TP
+\fB\-v\fR,\fB\-\-verbose\fR
+Print detailed logs and events
+.
+.TP
 \fB\-h\fR,\fB\-\-help\fR
 Display command line help usage for the methods available
 .
@@ -59,7 +81,7 @@ Display command line help usage for the methods available
 Provide the dataset csv and run the analysis on them like this :
 .
 .P
-$ networkjs \-d \-e \-b file\.csv Source Target Weight
+$ networkjs \-d \-e \-b file\.csv \-s Source \-t Target \-w Weight
 .
 .P
 View the command line usage :

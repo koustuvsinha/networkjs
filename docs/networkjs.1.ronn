@@ -3,7 +3,10 @@ networkjs - NetworkX clone in JavaScript
 
 ## SYNOPSIS
 
-`networkjs` [<options> ...] <file.csv> <sourceNode> <targetNode> [weightNode] <br>
+`networkjs` [<options> ...] <file.csv> <br>
+`networkjs` `-s`|`--source` <sourceNode> ... <br>
+`networkjs` `-t`|`--target` <targetNode> ... <br>
+`networkjs` `-w`|`--weight` <weightNode> ... <br>
 `networkjs` `-d`|`--degree` <file.csv> ... <br>
 `networkjs` `-b`|`--betweenness` <file.csv> ... <br>
 `networkjs` `-e`|`--eigenvector` <file.csv> ... <br>
@@ -27,19 +30,21 @@ on the provided dataset. The `--help` flag displays command line options
 
 The `networkjs` command expects one valid csv file, which should be comma separated,
 for example `file.csv`. This file should contain the edge list of a graph in the
-format of Source,Target,Weight,..etc. The header names should be specified after file name
-in the order of Source,Target and Weight (optional)
-
-## SOURCE,TARGET and WEIGHT
-
-`networkjs` expects the header names of source node, target node and weight node(optional)
-to be specified in order in order to perform calculations. Source and Target are
-required in order to run the program
+format of Source,Target,Weight,..etc or can be provided by individual option flags
 
 ## OPTIONS
 
 These options instruct `networkjs` to run the centrality measures on the provided
 dataset :
+
+  * `-s`,`--source` <sourceNode>:
+    Provide the column name for Source Node. Default value = "Source"
+
+  * `-t`,`--target` <targetNode>:
+    Provide the column name for Target Node. Default value = "Target"
+
+  * `-w`,`--weight` <weightNode>:
+    Provide the column name for Weight Node. Default value = "Weight"
 
   * `-d`,`--degree`:
     Run Degree centrality measure over the given dataset, which is defined as the
@@ -57,6 +62,9 @@ dataset :
     nodes contribute more to the score of the node in question than equal
     connections to low-scoring nodes. <https://en.wikipedia.org/wiki/Centrality#Eigenvector_centrality>
 
+  * `-v`,`--verbose`:
+    Print detailed logs and events
+
   * `-h`,`--help`:
     Display command line help usage for the methods available
 
@@ -64,7 +72,7 @@ dataset :
 
 Provide the dataset csv and run the analysis on them like this :
 
-  $ networkjs -d -e -b file.csv Source Target Weight
+  $ networkjs -d -e -b file.csv -s Source -t Target -w Weight
 
 View the command line usage :
 

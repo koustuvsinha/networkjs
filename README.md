@@ -36,19 +36,38 @@ make install
 
 See full options available : `networkjs --help`
 
-```sh
-Usage: networkjs [options] <file.csv> <sourceNode> <targetNode> [weightNode]
+* `-s`,`--source` <sourceNode>:
+  Provide the column name for Source Node. Default value = "Source"
 
-  Options:
+* `-t`,`--target` <targetNode>:
+  Provide the column name for Target Node. Default value = "Target"
 
-    -h, --help        output usage information
-    -d,--degree       Calculate the degree centrality
-    -b,--betweenness  Calculate the betweenness centrality
-    -e,--eigenvector  Calculate the Eigenvector centrality
-    -j,--json         Return the results in json, else csv
-```
+* `-w`,`--weight` <weightNode>:
+  Provide the column name for Weight Node. Default value = "Weight"
 
-or for more details consult the man page : `man networkjs`
+* `-d`,`--degree`:
+  Run Degree centrality measure over the given dataset, which is defined as the
+  number of links incident upon a node. <https://en.wikipedia.org/wiki/Centrality#Degree_centrality>
+
+* `-b`,`--betweenness`:
+  Run Betweenness centrality measure over the given dataset, which for a node is
+  defined as the number of times a node acts as a bridge along the shortest path
+  between two other nodes. <https://en.wikipedia.org/wiki/Centrality#Betweenness_centrality>
+
+* `-e`,`--eigenvector`:
+  Run Eigenvector centrality measure over the given dataset, which calculates
+  the influence of a node in the network. It assigns relative scores to all
+  nodes in the network based on the concept that connections to high-scoring
+  nodes contribute more to the score of the node in question than equal
+  connections to low-scoring nodes. <https://en.wikipedia.org/wiki/Centrality#Eigenvector_centrality>
+
+* `-v`,`--verbose`:
+  Print detailed logs and events
+
+* `-h`,`--help`:
+  Display command line help usage for the methods available
+
+For more details consult the man page : `man networkjs`
 
 ### Library Usage
 
@@ -103,6 +122,10 @@ npm test
 ```
 
 ## Change Log
+
+### 0.1.1
+
+* Changed the command line usage for providing Source, Target and Weight column headers
 
 ### 0.1.0
 

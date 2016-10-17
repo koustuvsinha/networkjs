@@ -18,31 +18,46 @@ import {degree_centrality} from './algorithms/centrality/degree'
 var betweenness_centrality = require('./algorithms/centrality/betweenness').betweenness_centrality
 var eigenvector_centrality = require('./algorithms/centrality/eigenvector').eigenvector_centrality
 
-program.arguments('<file.csv> <sourceNode> <targetNode> [weightNode]')
+program.arguments('<file.csv>')
+  .option('-s,--source <source>','Source Node','Source')
+  .option('-t,--target <target>','Target Node','Target')
+  .option('-w,--weight <weight>','Weight Node','Weight')
   .option('-d,--degree','Calculate the degree centrality')
   .option('-b,--betweenness','Calculate the betweenness centrality')
   .option('-e,--eigenvector','Calculate the Eigenvector centrality')
   .option('-j,--json','Return the results in json, else csv')
-  .action((file,sourceNode,targetNode,weightNode)=>{
+  .option('-v,--verbose','Verbose help and logs')
+	.action((file)=>{
     let G = new Graph()
     co(function *() {
-      sourceNode = sourceNode ? sourceNode : 'Source'
-      targetNode = targetNode ? targetNode : 'Target'
-      weightNode = weightNode ? weightNode : 'Weight'
+      let sourceNode = program.source
+      let targetNode = program.target
+      let weightNode = program.weight
+      if(program.verbose) {
+        console.log('Source,Target and Weight Nodes : ')
+        console.log(sourceNode,targetNode,weightNode)
+      }
       G.read_csv(file,sourceNode,targetNode,weightNode,(err)=>{
         if(err) {
+          if(program.verbose) {
+            console.log('Error reading csv file')
+          }
           console.log(err)
           process.exit(1)
         }
         else {
-          //console.log('Done reading file')
+          if(program.verbose) {
+              console.log('Done reading file')
+          }
           //console.log(G.num_nodes() + ' nodes found')
           var res = {}
           var fields = ['node']
           if(program.degree) {
-            //console.log('Calculating Degree centrality ...')
             res['degree_centrality'] = degree_centrality(G)
             fields.push('degree_centrality')
+            if(program.verbose) {
+              console.log('Calculated Degree centrality')
+            }
           }
           if(program.betweenness) {
             //var k = yield prompt('k: (default null)')
@@ -51,17 +66,25 @@ program.arguments('<file.csv> <sourceNode> <targetNode> [weightNode]')
             //console.log('Calculating Betweenness centrality ...')
             res['betweenness_centrality'] = betweenness_centrality(G,null,true,weightNode)
             fields.push('betweenness_centrality')
+            if(program.verbose) {
+              console.log('Calculated Betweenness centrality')
+            }
           }
           if(program.eigenvector) {
             //console.log('Calculating Eigenvector centrality ...')
             res['eigenvector_centrality'] = eigenvector_centrality(G,100,1.0e-6,null,weightNode)
             fields.push('eigenvector_centrality')
+            if(program.verbose) {
+              console.log('Calculated Eigenvector centrality')
+            }
           }
           if(program.json) {
             console.log(res)
           }
           else {
-            console.log(json2csv({data: reformat(res),fields : fields}))
+            if(!_.isEmpty(res)) {
+              console.log(json2csv({data: reformat(res),fields : fields}))
+            }
           }
           process.exit(0);
         }
