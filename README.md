@@ -23,6 +23,12 @@ Implemented modules :
 * Install [Nodejs](https://nodejs.org/en/)
 * For command line install the tool via npm : `npm install -g networkjs`
 * For library usage : `npm install --save networkjs`
+* Makefile is also provided which will automatically install latest node if not present and then install the command line tool. To run, type the following :
+
+```sh
+make
+make install
+```
 
 ## Usage
 
