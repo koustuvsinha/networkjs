@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Networkjs by koustuvsinha</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Networkjs</h1>
+          <h2>NetworkX clone in JavaScript</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/koustuvsinha/networkjs/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/koustuvsinha/networkjs/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/koustuvsinha/networkjs" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="networkjs-" class="anchor" href="#networkjs-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NetworkJS <a href="https://travis-ci.com/koustuvsinha/networkjs"><img src="https://travis-ci.com/koustuvsinha/networkjs.svg?token=5yqsyiS9tZJLYxWs2qpa&amp;branch=master" alt="Build Status"></a>
+</h1>
+
+<p><a href="networkx.github.io">NetworkX</a> clone in JavaScript!</p>
+
+<p>Implemented modules :</p>
+
+<ul>
+<li>Degree Centrality</li>
+<li>Betweenness Centrality</li>
+<li>Eigenvector Centrality</li>
+</ul>
+
+<h2>
+<a id="menu" class="anchor" href="#menu" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Menu</h2>
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li>
+<a href="#usage">Usage</a>
+
+<ul>
+<li><a href="#command-line">Command Line</a></li>
+<li><a href="#library-usage">Library</a></li>
+</ul>
+</li>
+<li><a href="#api-reference">API Reference</a></li>
+<li><a href="#run-tests">Run Tests</a></li>
+<li><a href="#change-log">Change Log</a></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<ul>
+<li>Install <a href="https://nodejs.org/en/">Nodejs</a>
+</li>
+<li>For command line install the tool via npm : <code>npm install -g networkjs</code>
+</li>
+<li>For library usage : <code>npm install --save networkjs</code>
+</li>
+<li>Makefile is also provided which will automatically install latest node if not present and then install the command line tool. To run, type the following :</li>
+</ul>
+
+<div class="highlight highlight-source-shell"><pre>make
+make install</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="command-line" class="anchor" href="#command-line" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Command Line</h3>
+
+<p>See full options available : <code>networkjs --help</code></p>
+
+<ul>
+<li><p><code>-s</code>,<code>--source</code> :
+Provide the column name for Source Node. Default value = "Source"</p></li>
+<li><p><code>-t</code>,<code>--target</code> :
+Provide the column name for Target Node. Default value = "Target"</p></li>
+<li><p><code>-w</code>,<code>--weight</code> :
+Provide the column name for Weight Node. Default value = "Weight"</p></li>
+<li><p><code>-d</code>,<code>--degree</code>:
+Run Degree centrality measure over the given dataset, which is defined as the
+number of links incident upon a node. <a href="https://en.wikipedia.org/wiki/Centrality#Degree_centrality">https://en.wikipedia.org/wiki/Centrality#Degree_centrality</a></p></li>
+<li><p><code>-b</code>,<code>--betweenness</code>:
+Run Betweenness centrality measure over the given dataset, which for a node is
+defined as the number of times a node acts as a bridge along the shortest path
+between two other nodes. <a href="https://en.wikipedia.org/wiki/Centrality#Betweenness_centrality">https://en.wikipedia.org/wiki/Centrality#Betweenness_centrality</a></p></li>
+<li><p><code>-e</code>,<code>--eigenvector</code>:
+Run Eigenvector centrality measure over the given dataset, which calculates
+the influence of a node in the network. It assigns relative scores to all
+nodes in the network based on the concept that connections to high-scoring
+nodes contribute more to the score of the node in question than equal
+connections to low-scoring nodes. <a href="https://en.wikipedia.org/wiki/Centrality#Eigenvector_centrality">https://en.wikipedia.org/wiki/Centrality#Eigenvector_centrality</a></p></li>
+<li><p><code>-v</code>,<code>--verbose</code>:
+Print detailed logs and events</p></li>
+<li><p><code>-h</code>,<code>--help</code>:
+Display command line help usage for the methods available</p></li>
+</ul>
+
+<p>For more details consult the <a href="docs/networkjs.html">man page</a> : <code>man networkjs</code></p>
+
+<h3>
+<a id="library-usage" class="anchor" href="#library-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Library Usage</h3>
+
+<p>Import the required modules either using AMD <code>require</code> or ES6 <code>import</code> :</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> <span class="pl-smi">nj</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>networkjs<span class="pl-pds">'</span></span>
+<span class="pl-k">const</span> <span class="pl-c1">Graph</span> <span class="pl-k">=</span> <span class="pl-smi">nj</span>.<span class="pl-smi">datastructures</span>.<span class="pl-smi">Graph</span>
+<span class="pl-k">const</span> {<span class="pl-c1">betweenness_centrality</span>,
+  <span class="pl-c1">degree_centrality</span>,
+  <span class="pl-c1">eigenvector_centrality</span>} <span class="pl-k">=</span> <span class="pl-smi">nj</span>.<span class="pl-smi">algorithms</span>.<span class="pl-smi">centrality</span>
+
+<span class="pl-c">// Add edges</span>
+<span class="pl-k">let</span> <span class="pl-c1">G</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Graph</span>()
+<span class="pl-c1">G</span>.<span class="pl-en">add_edges_from</span>([[<span class="pl-c1">1</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]])</pre></div>
+
+<h2>
+<a id="api-reference" class="anchor" href="#api-reference" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API Reference</h2>
+
+<h3>
+<a id="datastructuresgraph" class="anchor" href="#datastructuresgraph" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>datastructures.Graph</h3>
+
+<ul>
+<li><code>read_csv</code></li>
+<li><code>add_node</code></li>
+<li><code>add_nodes_from</code></li>
+<li><code>remove_node</code></li>
+<li><code>get_node</code></li>
+<li><code>order</code></li>
+<li><code>has_node</code></li>
+<li><code>num_nodes</code></li>
+<li><code>get_nodes</code></li>
+<li><code>is_directed</code></li>
+<li><code>add_edge</code></li>
+<li><code>add_edges_from</code></li>
+<li><code>add_weighted_edges_from</code></li>
+<li><code>remove_edge</code></li>
+<li><code>remove_edges_from</code></li>
+<li><code>has_edge</code></li>
+<li><code>neighbors</code></li>
+<li><code>degree_iter</code></li>
+<li><code>nbunch_iter</code></li>
+</ul>
+
+<h3>
+<a id="algorithmscentrality" class="anchor" href="#algorithmscentrality" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>algorithms.centrality</h3>
+
+<ul>
+<li><code>degree_centrality</code></li>
+<li><code>betweenness_centrality</code></li>
+<li><code>eigenvector_centrality</code></li>
+</ul>
+
+<h2>
+<a id="run-tests" class="anchor" href="#run-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run Tests</h2>
+
+<pre><code>npm test
+</code></pre>
+
+<h2>
+<a id="change-log" class="anchor" href="#change-log" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Change Log</h2>
+
+<h3>
+<a id="011" class="anchor" href="#011" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>0.1.1</h3>
+
+<ul>
+<li>Changed the command line usage for providing Source, Target and Weight column headers</li>
+</ul>
+
+<h3>
+<a id="010" class="anchor" href="#010" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>0.1.0</h3>
+
+<ul>
+<li>Updated command line interface, now provide Source, Target and Weight headers directly</li>
+<li>Command line output in csv by default. To get json output provide flag <code>--json</code>
+</li>
+</ul>
+
+<h3>
+<a id="007" class="anchor" href="#007" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>0.0.7</h3>
+
+<ul>
+<li>Fix babel <a href="http://stackoverflow.com/questions/33505992/babel-6-changes-how-it-exports-default">module.exports issue</a>
+</li>
+<li>Add man pages</li>
+</ul>
+
+<h3>
+<a id="006" class="anchor" href="#006" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>0.0.6</h3>
+
+<ul>
+<li>Patch fix again broken library import</li>
+</ul>
+
+<h3>
+<a id="005" class="anchor" href="#005" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>0.0.5</h3>
+
+<ul>
+<li>Patch fix broken library import</li>
+</ul>
+
+<h3>
+<a id="004" class="anchor" href="#004" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>0.0.4</h3>
+
+<ul>
+<li>Experimental Library Support</li>
+</ul>
+
+<h3>
+<a id="003" class="anchor" href="#003" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>0.0.3</h3>
+
+<ul>
+<li>Minor fixes</li>
+<li>Better readme</li>
+<li>Project is now public</li>
+</ul>
+
+<h3>
+<a id="002" class="anchor" href="#002" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>0.0.2</h3>
+
+<ul>
+<li>Published as npm package</li>
+<li>Supports command line features</li>
+</ul>
+
+<h3>
+<a id="001" class="anchor" href="#001" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>0.0.1</h3>
+
+<ul>
+<li>Initial release, supports Degree centrality, Betweenness centrality and Eigenvector centrality</li>
+<li>Added Tests</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="https://koustuvs.mit-license.org/">MIT</a></p>
+        </section>
+
+        <footer>
+          Networkjs is maintained by <a href="https://github.com/koustuvsinha">koustuvsinha</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
